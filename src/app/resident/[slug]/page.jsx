@@ -1,16 +1,20 @@
 "use client";
-import React from "react";
-import { getCharacter } from "../lib/api";
+import React, { useEffect, useState } from "react";
+import { getCharacter } from "@/lib/api";
+import CharacterDetail from "@components/CharacterDetail/CharacterDetail";
+
 
 const Detail = ({ params }) => {
-  console.log(params);
+  const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    const fetchCharacter= async () => {
+    const fetchCharacter = async () => {
       try {
-        const response = await getCharacter();
+        const response = await getCharacter(params.slug);
         console.log(response);
-        setCharacters(response);
+        if (response.status === 200) {
+          setCharacter(response.data);
+        }
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
@@ -18,7 +22,12 @@ const Detail = ({ params }) => {
 
     fetchCharacter();
   }, []);
-  return <div>Detail</div>;
+
+  return (
+    <div>
+      <CharacterDetail {...character} />
+    </div>
+  );
 };
 
 export default Detail;
