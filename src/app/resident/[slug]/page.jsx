@@ -25,4 +25,5 @@ const Detail = ({ params }) => {
   return <div>{character.location && <CharacterDetail {...character} />}</div>;
 };
 
+
 export default Detail;
