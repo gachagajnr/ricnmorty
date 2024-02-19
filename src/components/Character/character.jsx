@@ -12,47 +12,47 @@ const Character = ({
   image,
 }) => {
   return (
-    <div className="flex flex-row p-4 justify-center gap-2 border   border-gray-700 rounded-lg">
+    <div className="flex flex-row p-4 justify-center gap-2 border mt-4 border-gray-700 rounded-lg">
       <div>
-        <Image src={""} width={150} height={150} alt="" />
+        <Image src={image} width={150} height={150} alt="" />
       </div>
-      <div>
+      <div className="flex flex-col">
         <h1>
-          <span className="text-sm font-bold">Name:</span>
-          {character.name}
+          <span className="text-sm font-semibold">Name:</span>
+          {name}
         </h1>
         <h2>
-          <span className="text-sm font-bold">Status: </span>
-          {character.status}
+          <span className="text-sm font-semibold">Status: </span>
+          {status}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Status: </span>
-          {character.species}
+          <span className="text-sm font-semibold">Status: </span>
+          {species}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Gender: </span>
-          {character.gender}
+          <span className="text-sm font-semibold">Gender: </span>
+          {gender}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Type: </span>
-          {character.type}
+          <span className="text-sm font-semibold">Type: </span>
+          {type}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Location: </span>
-          {character.location.name}
+          <span className="text-sm font-semibold">Location: </span>
+          {location.name}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Resident Url: </span>
-          {character.location.url}
+          <span className="text-sm font-semibold">Resident Url: </span>
+          {location.url}
         </h2>
         <h2>
-          <span className="text-sm font-bold">Image: </span>
-          {character.image}
+          <span className="text-sm font-semibold">Image: </span>
+          {image}
         </h2>
-        <h2>
-          <span className="text-sm font-bold">Url: </span>
-          {character.url}
-        </h2>
+        {/* <h2>
+          <span className="text-sm font-semibold">Url: </span>
+          {url}
+        </h2> */}
       </div>
     </div>
   );

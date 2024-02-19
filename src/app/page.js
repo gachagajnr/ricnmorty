@@ -23,9 +23,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>Ric and Morty</h1>
-
       {characters.map((character) => (
-        <Character key={character.id} />
+        <Character key={character.id}  {...character} />
       ))}
     </main>
   );
