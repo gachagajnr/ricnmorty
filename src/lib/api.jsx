@@ -11,6 +11,15 @@ export const getCharacters = async () => {
   }
 };
 
-export const getCharacter = async (characterId) => {};
+export const getCharacter = async (characterId) => {
+  try {
+    const character = await axios.get(
+      `https://rickandmortyapi.com/api/character/${characterId}`
+    );
+    return character;
+  } catch (error) {
+    return error;
+  }
+};
 
 export const getUser = async (userid) => {};
