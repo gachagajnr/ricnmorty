@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/Image";
 
-const character = ({
+const Character = ({
   name,
   status,
   species,
@@ -58,4 +58,4 @@ const character = ({
   );
 };
 
-export default character;
+export default Character;
