@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Character from "@components/Character/Character";
-import { getCharacters } from "./lib/api";
+import { getCharacters } from "../lib/api";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
