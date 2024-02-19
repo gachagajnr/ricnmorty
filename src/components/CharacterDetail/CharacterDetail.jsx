@@ -9,12 +9,13 @@ const CharacterDetail = ({
   species,
   type,
   gender,
-  
+  location,
   origin,
   image,
 }) => {
+    console.log(location)
   return (
-    <div className="flex flex-row p-4 justify-center gap-2 border mt-4 border-gray-700 rounded-lg">
+    <div className="flex flex-row p-4 justify-center gap-2 border mt-4 rounded-lg">
       <Link href={`/resident/${id}`}>
         <div>
           <Image src={image} width={150} height={150} alt="" />
@@ -40,15 +41,18 @@ const CharacterDetail = ({
             <span className="text-sm font-semibold">Type: </span>
             {type}
           </h2>
-           
+          <h2>
+            <span className="text-sm font-semibold">Location: </span>
+            {location.name}
+          </h2>
+          <h2>
+            <span className="text-sm font-semibold">Resident Url: </span>
+            {location.url}
+          </h2>
           <h2>
             <span className="text-sm font-semibold">Image: </span>
             {image}
           </h2>
-          {/* <h2>
-          <span className="text-sm font-semibold">Url: </span>
-          {url}
-        </h2> */}
         </div>
       </Link>
     </div>

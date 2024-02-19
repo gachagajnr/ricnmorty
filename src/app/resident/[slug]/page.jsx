@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { getCharacter } from "@/lib/api";
 import CharacterDetail from "@components/CharacterDetail/CharacterDetail";
 
-
 const Detail = ({ params }) => {
   const [character, setCharacter] = useState({});
 
@@ -23,11 +22,7 @@ const Detail = ({ params }) => {
     fetchCharacter();
   }, []);
 
-  return (
-    <div>
-      <CharacterDetail {...character} />
-    </div>
-  );
+  return <div>{character.location && <CharacterDetail {...character} />}</div>;
 };
 
 export default Detail;
