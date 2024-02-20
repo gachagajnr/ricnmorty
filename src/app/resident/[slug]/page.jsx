@@ -5,12 +5,14 @@ import CharacterDetail from "@components/CharacterDetail/CharacterDetail";
 
 const Detail = ({ params }) => {
   const [character, setCharacter] = useState({});
+  const [open, setOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
         const response = await getCharacter(params.slug);
-        console.log(response);
         if (response.status === 200) {
           setCharacter(response.data);
         }
@@ -22,8 +24,57 @@ const Detail = ({ params }) => {
     fetchCharacter();
   }, []);
 
-  return <div>{character.location && <CharacterDetail {...character} />}</div>;
-};
+  const handleLeaveNote = (character) => {
+    setOpen((prev) => !prev);
+    setModalData(character);
+  };
 
+  const onChange = (e) => {
+    setNotes(e.target.value);
+  };
+
+  const saveNotes = (values) => {
+    console.log(notes, character.id, values.notes);
+  };
+
+  return (
+    <div>
+      <dialog open={open} className=" p-6 bg-gray-300 rounded-lg">
+        <h2 className="font-semibold text-lg py-1">
+          Add Notes for {modalData.name}
+        </h2>
+        <form action={saveNotes}>
+          <div className="grid grid-flow-row gap-2">
+            <textarea
+              type="text"
+              placeholder="Add Notes"
+              name="notes"
+              onChange={onChange}
+              cols={20}
+              rows={6}
+              className=" p-2 border border-r-2 rounded-lg "
+            />
+
+            <button className="py-1 bg-green-400 text-white">Save Notes</button>
+          </div>
+        </form>
+      </dialog>
+      {character.location && (
+        <>
+          <CharacterDetail {...character} />
+
+          <div className="text-center">
+            <button
+              onClick={() => handleLeaveNote(character)}
+              className="border border-blue-400 text-white bg-blue-600 w-96 p-2 text-center rounded-lg"
+            >
+              Add Note
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default Detail;
