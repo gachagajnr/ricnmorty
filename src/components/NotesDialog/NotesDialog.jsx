@@ -1,12 +1,15 @@
 import React from "react";
 
-const NotesDialog = ({ name, saveNotes, onChange }) => {
+const NotesDialog = ({ name, saveNotes, onChange, error, success }) => {
   return (
     <dialog
       id="notesDialog"
       className="p-8 shadow-lg rounded-lg  w-3/5 absolute "
     >
       <h2 className="font- text-sm text-start py-1">Add Notes for {name}</h2>
+      {error && <h2 className="p-1 text-red-400 text-sm">{error}</h2>}
+      {success && <h2 className="p-1 text-green-400 text-sm">{success}</h2>}
+
       <div className="modal-action">
         <form method="dialog">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">

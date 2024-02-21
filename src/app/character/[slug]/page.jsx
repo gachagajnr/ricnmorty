@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { getCharacter } from "@/lib/api";
+import { addNewNote } from "@lib/actions";
+
 import CharacterDetail from "@components/CharacterDetail/CharacterDetail";
 import NotesDialog from "@components/NotesDialog/NotesDialog";
 
@@ -8,20 +10,19 @@ const Detail = ({ params }) => {
   const [character, setCharacter] = useState({});
   const [modalData, setModalData] = useState({});
   const [notes, setNotes] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
         const response = await getCharacter(params.slug);
-        console.log(response);
         // if (response.status === 200) {
         if (response) {
           // setCharacter(response.data);
           setCharacter(response);
         }
-      } catch (error) {
-        console.error("Error fetching characters:", error);
-      }
+      } catch (error) {}
     };
 
     fetchCharacter();
@@ -36,8 +37,14 @@ const Detail = ({ params }) => {
     setNotes(e.target.value);
   };
 
-  const saveNotes = () => {
-    console.log(notes, character.id);
+  const saveNotes = async () => {
+    let data = { characterId: character.id, notes: notes };
+    try {
+      const res = await addNewNote(data);
+      setSuccess(res.notes);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -49,6 +56,8 @@ const Detail = ({ params }) => {
         name={modalData.name}
         onChange={onChange}
         saveNotes={saveNotes}
+        error={error}
+        success={success}
       />
 
       {character.location && (

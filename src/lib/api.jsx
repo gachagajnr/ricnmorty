@@ -636,11 +636,8 @@ export const getCharacter = async (characterId) => {
     const character = await data[0].results.find(
       (character) => character.id === parseInt(characterId)
     );
-    console.log(character);
     return character;
   } catch (error) {
     return error;
   }
 };
-
-export const getUser = async (userid) => {};

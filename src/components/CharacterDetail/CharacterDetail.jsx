@@ -26,7 +26,7 @@ const CharacterDetail = ({
         >
           Go Back
         </button>
-        <h6 className="text-2xl font-semibold ">{name}</h6>
+        <h6 className="text-2xl font-semibold text-orange-800">{name}</h6>
       </div>
       <div className="flex flex-col w-full flex-wrap">
         <Image src={image} width={250} height={300} alt={name} />
