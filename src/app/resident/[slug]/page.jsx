@@ -38,7 +38,7 @@ const Detail = ({ params }) => {
   };
 
   return (
-    <div>
+    <div className="mt-14">
       <dialog open={open} className=" p-6 bg-gray-300 rounded-lg">
         <h2 className="font-semibold text-lg py-1">
           Add Notes for {modalData.name}
