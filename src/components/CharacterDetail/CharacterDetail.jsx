@@ -32,7 +32,7 @@ const CharacterDetail = ({
           <h2 className="text-center pt-2 font-bold">Character Information</h2>
           <button
             onClick={onClick}
-            className="border  border-blue-400 text-white text-sm bg-blue-600 w-28 p-1 text-center rounded-lg"
+            className="border cursor-pointer  border-blue-400 text-white text-sm bg-blue-600 w-28 p-1 text-center rounded-lg"
           >
             Add Notes
           </button>

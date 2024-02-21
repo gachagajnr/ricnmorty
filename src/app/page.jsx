@@ -7,21 +7,23 @@ import { getCharacters } from "../lib/api";
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
+  const [error, setError] = useState("");
   const [filteredData, setfilteredData] = useState(characters);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const fetchCharacters = async () => {
-      try {
-        const response = await getCharacters();
-        console.log(response);
-        setCharacters(response);
-      } catch (error) {
-        console.error("Error fetching characters:", error);
+      const response = await getCharacters();
+      console.log(response[0].results);
+      if (response[0].results) {
+        setCharacters(response[0].results);
+      } else {
+        setError(response.message);
       }
     };
     fetchCharacters();
   }, []);
+
   useEffect(() => {
     setfilteredData(characters);
   }, [characters]);
@@ -56,9 +58,13 @@ export default function Home() {
         />
       </div>
       <div className="overflow-auto">
-        {filteredData.map((character) => (
-          <Character key={character.id} {...character} />
-        ))}
+        {filteredData.length ? (
+          filteredData.map((character) => (
+            <Character key={character.id} {...character} />
+          ))
+        ) : (
+          <div className="text-center text-orange-400">{error}</div>
+        )}
       </div>
     </div>
   );

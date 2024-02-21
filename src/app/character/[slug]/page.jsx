@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { getCharacter } from "@/lib/api";
 import CharacterDetail from "@components/CharacterDetail/CharacterDetail";
+import NotesDialog from "@components/NotesDialog/NotesDialog";
 
 const Detail = ({ params }) => {
   const [character, setCharacter] = useState({});
-  const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const [notes, setNotes] = useState("");
 
@@ -13,8 +13,11 @@ const Detail = ({ params }) => {
     const fetchCharacter = async () => {
       try {
         const response = await getCharacter(params.slug);
-        if (response.status === 200) {
-          setCharacter(response.data);
+        console.log(response);
+        // if (response.status === 200) {
+        if (response) {
+          // setCharacter(response.data);
+          setCharacter(response);
         }
       } catch (error) {
         console.error("Error fetching characters:", error);
@@ -25,7 +28,7 @@ const Detail = ({ params }) => {
   }, []);
 
   const handleLeaveNote = (character) => {
-    setOpen((prev) => !prev);
+    document.getElementById("notesDialog").showModal();
     setModalData(character);
   };
 
@@ -34,29 +37,17 @@ const Detail = ({ params }) => {
   };
 
   const saveNotes = () => {
-    console.log(notes, character.id,);
+    console.log(notes, character.id);
   };
 
   return (
     <div className="grid justify-center mt-12">
-      <dialog open={open} className="p-6 shadow-lg rounded-lg content-center">
-        <h2 className="font- text-sm text-start py-1">
-          Add Notes for {modalData.name}
-        </h2>
-        <form action={saveNotes} className="grid gap-2">
-          <textarea
-            type="text"
-            placeholder="Add Notes"
-            name="notes"
-            onChange={onChange}
-            cols={20}
-            rows={4}
-            className=" p-2 border border-r-2 rounded-lg "
-          />
+      <NotesDialog
+        name={modalData.name}
+        onChange={onChange}
+        saveNotes={saveNotes}
+      />
 
-          <button className="py-1 bg-blue-600 text-white rounded-lg">Save</button>
-        </form>
-      </dialog>
       {character.location && (
         <>
           <CharacterDetail
