@@ -40,7 +40,8 @@ export default function Home() {
         character.name.toLowerCase().includes(searchValue.toLowerCase()) ||
         character.location.name
           .toLowerCase()
-          .includes(searchValue.toLowerCase())
+          .includes(searchValue.toLowerCase()) ||
+        character.type.toLowerCase().includes(searchValue.toLowerCase())
       );
     });
     setfilteredData(filteredData);
