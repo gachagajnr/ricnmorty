@@ -33,44 +33,36 @@ const Detail = ({ params }) => {
     setNotes(e.target.value);
   };
 
-  const saveNotes = (values) => {
-    console.log(notes, character.id, values.notes);
+  const saveNotes = () => {
+    console.log(notes, character.id,);
   };
 
   return (
-    <div className="mt-14">
-      <dialog open={open} className=" p-6 bg-gray-300 rounded-lg">
-        <h2 className="font-semibold text-lg py-1">
+    <div className="grid justify-center mt-12">
+      <dialog open={open} className="p-6 shadow-lg rounded-lg content-center">
+        <h2 className="font- text-sm text-start py-1">
           Add Notes for {modalData.name}
         </h2>
-        <form action={saveNotes}>
-          <div className="grid grid-flow-row gap-2">
-            <textarea
-              type="text"
-              placeholder="Add Notes"
-              name="notes"
-              onChange={onChange}
-              cols={20}
-              rows={6}
-              className=" p-2 border border-r-2 rounded-lg "
-            />
+        <form action={saveNotes} className="grid gap-2">
+          <textarea
+            type="text"
+            placeholder="Add Notes"
+            name="notes"
+            onChange={onChange}
+            cols={20}
+            rows={4}
+            className=" p-2 border border-r-2 rounded-lg "
+          />
 
-            <button className="py-1 bg-green-400 text-white">Save Notes</button>
-          </div>
+          <button className="py-1 bg-blue-600 text-white rounded-lg">Save</button>
         </form>
       </dialog>
       {character.location && (
         <>
-          <CharacterDetail {...character} />
-
-          <div className="text-center">
-            <button
-              onClick={() => handleLeaveNote(character)}
-              className="border border-blue-400 text-white bg-blue-600 w-96 p-2 text-center rounded-lg"
-            >
-              Add Note
-            </button>
-          </div>
+          <CharacterDetail
+            {...character}
+            onClick={() => handleLeaveNote(character)}
+          />
         </>
       )}
     </div>

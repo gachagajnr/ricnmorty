@@ -13,6 +13,8 @@ const CharacterDetail = ({
   location,
   origin,
   image,
+  onClick,
+  notes,
 }) => {
   const router = useRouter();
   return (
@@ -26,8 +28,16 @@ const CharacterDetail = ({
 
       <Image src={image} width={300} height={600} alt={name} />
       <div>
-        <h2 className="text-center pt-2 font-bold">Character Information</h2>
-         <div className="grid justify-start p-4">
+        <div className="flex flex-row justify-between py-1">
+          <h2 className="text-center pt-2 font-bold">Character Information</h2>
+          <button
+            onClick={onClick}
+            className="border  border-blue-400 text-white text-sm bg-blue-600 w-28 p-1 text-center rounded-lg"
+          >
+            Add Notes
+          </button>
+        </div>
+        <div className="grid justify-start p-2">
           <div className="flex flex-row  gap-2">
             <span className="text-sm font-thin">Status: </span>
             <h6 className="text-md font-semibold ">{status}</h6>
@@ -47,6 +57,10 @@ const CharacterDetail = ({
           <div className="flex flex-row  gap-2">
             <span className="text-sm font-thin">Location: </span>
             <h6 className="text-md font-semibold">{location.name}</h6>
+          </div>
+          <div className="flex flex-col  gap-2">
+            <span className="text-sm font-thin">Notes: </span>
+            <h6 className="text-md font-semibold">{notes}</h6>
           </div>
         </div>
       </div>
