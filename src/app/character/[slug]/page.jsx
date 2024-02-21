@@ -41,7 +41,10 @@ const Detail = ({ params }) => {
   };
 
   return (
-    <div className="grid justify-center mt-12">
+    <div className=" mt-12">
+      <div className="py-1 text-center">
+        <h1 className="font-light text-4xl">Character Information</h1>
+      </div>
       <NotesDialog
         name={modalData.name}
         onChange={onChange}

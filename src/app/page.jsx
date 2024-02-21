@@ -48,25 +48,24 @@ export default function Home() {
   }
 
   return (
-    <div className="grid justify-center">
-      <div className="p-4 text-center">
-        <h1 className="text-4xl font-light">Ric and Morty Characters</h1>
+    <div>
+      <div className="p-4 text-center mx-4">
+        <h1 className="text-4xl font-light">Ric N Morty</h1>
         <input
           type="text"
           onChange={handleSearch}
           placeholder="Search Characters by name or location"
-          className="input input-md rounded-lg border-2 w-3/5 border-cyan-600 p-4 mt-3"
+          className="input input-md rounded-lg border-2   border-cyan-600 p-4 mt-3"
         />
       </div>
-      <div className="overflow-auto">
-        {filteredData.length ? (
-          filteredData.map((character) => (
-            <Character key={character.id} {...character} />
-          ))
-        ) : (
-          <div className="text-center text-orange-400">{error}</div>
-        )}
-      </div>
+
+      {filteredData.length ? (
+        filteredData.map((character) => (
+          <Character key={character.id} {...character} />
+        ))
+      ) : (
+        <div className="text-center text-orange-400">{error}</div>
+      )}
     </div>
   );
 }

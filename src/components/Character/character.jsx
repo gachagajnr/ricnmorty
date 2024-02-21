@@ -19,7 +19,7 @@ const Character = ({
   return (
     <div
       onClick={() => router.push(`/character/${id}`)}
-      className="flex flex-row  flex-wrap gap-4 p-4 shadow-lg justify-start cursor-pointer hover:-translate-y-2 w-full duration-150 hover:bg-slate-200  rounded-lg mt-6 mx-6"
+      className="flex flex-row  flex-wrap gap-4 p-4 shadow-lg justify-start cursor-pointer hover:-translate-y-2  duration-150 hover:bg-slate-200  rounded-lg mt-6 mx-4"
     >
       <Image
         src={image}
