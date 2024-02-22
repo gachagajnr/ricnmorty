@@ -33,6 +33,11 @@ const Detail = ({ params }) => {
     setModalData(character);
   };
 
+  const handleClearSuccessOrError = () => {
+    setSuccess("");
+    setError("");
+  };
+
   const onChange = (e) => {
     setNotes(e.target.value);
   };
@@ -42,8 +47,10 @@ const Detail = ({ params }) => {
     try {
       const res = await addNewNote(data);
       setSuccess(res.notes);
+      setError("");
     } catch (error) {
       setError(error.message);
+      setSuccess("");
     }
   };
 
@@ -58,6 +65,7 @@ const Detail = ({ params }) => {
         saveNotes={saveNotes}
         error={error}
         success={success}
+        onClick={handleClearSuccessOrError}
       />
 
       {character.location && (

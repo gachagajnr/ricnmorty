@@ -1,6 +1,13 @@
 import React from "react";
 
-const NotesDialog = ({ name, saveNotes, onChange, error, success }) => {
+const NotesDialog = ({
+  name,
+  saveNotes,
+  onChange,
+  error,
+  success,
+  onClick,
+}) => {
   return (
     <dialog
       id="notesDialog"
@@ -8,11 +15,18 @@ const NotesDialog = ({ name, saveNotes, onChange, error, success }) => {
     >
       <h2 className="font- text-sm text-start py-1">Add Notes for {name}</h2>
       {error && <h2 className="p-1 text-red-400 text-sm">{error}</h2>}
-      {success && <h2 className="p-1 text-green-400 text-sm">{success}</h2>}
+      {success && (
+        <h2 className="p-1 text-green-400 text-sm text-pretty">
+          {success} added successfully
+        </h2>
+      )}
 
       <div className="modal-action">
         <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+          <button
+            onClick={onClick}
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
             ✕
           </button>
         </form>
