@@ -28,7 +28,7 @@ const Detail = ({ params }) => {
     };
 
     fetchCharacter();
-  }, []);
+  }, [notes,params.slug]);
 
   const handleAddNote = (character) => {
     document.getElementById("notesDialog").showModal();
@@ -41,11 +41,15 @@ const Detail = ({ params }) => {
   };
 
   const onChange = (e) => {
+    e.preventDefault();
     setNotes(e.target.value);
   };
 
   const saveNote = async () => {
-    let data = { characterId: character.id, notes: notes };
+    let data = {
+      characterId: character.id.toString(),
+      notes: notes.toString(),
+    };
     try {
       const res = await addNewNote(data);
       setSuccess(res.notes);
