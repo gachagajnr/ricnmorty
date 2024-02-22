@@ -3,7 +3,7 @@ import React from "react";
 const NotesDialog = ({
   name,
   saveNotes,
-  onChange,
+
   error,
   success,
   onClick,
@@ -31,12 +31,11 @@ const NotesDialog = ({
           </button>
         </form>
       </div>
-      <form action={saveNotes} className="grid gap-2">
+      <form action={saveNote} className="grid gap-2">
         <textarea
           type="text"
           placeholder="Add any notes about this character"
           name="notes"
-          onChange={onChange}
           cols={16}
           rows={8}
           className=" p-2 border border-blue-300 rounded-lg "

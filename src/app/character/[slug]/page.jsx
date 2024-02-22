@@ -38,11 +38,7 @@ const Detail = ({ params }) => {
     setError("");
   };
 
-  const onChange = (e) => {
-    setNotes(e.target.value);
-  };
-
-  const saveNotes = async () => {
+  const saveNote = async () => {
     let data = { characterId: character.id, notes: notes };
     try {
       const res = await addNewNote(data);
@@ -61,13 +57,11 @@ const Detail = ({ params }) => {
       </div>
       <NotesDialog
         name={modalData.name}
-        onChange={onChange}
-        saveNotes={saveNotes}
+        saveNote={saveNote}
         error={error}
         success={success}
         onClick={handleClearSuccessOrError}
       />
-
       {character.location && (
         <>
           <CharacterDetail
