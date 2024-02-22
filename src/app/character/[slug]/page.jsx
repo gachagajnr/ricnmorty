@@ -28,9 +28,9 @@ const Detail = ({ params }) => {
     fetchCharacter();
   }, []);
 
-  const handleLeaveNote = (character) => {
+  const handleAddNote = (characterData) => {
     document.getElementById("notesDialog").showModal();
-    setModalData(character);
+    setModalData(characterData);
   };
 
   const handleClearSuccessOrError = () => {
@@ -66,7 +66,7 @@ const Detail = ({ params }) => {
         <>
           <CharacterDetail
             {...character}
-            onClick={() => handleLeaveNote(character)}
+            onClick={() => handleAddNote(character)}
           />
         </>
       )}
