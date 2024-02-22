@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/Image";
 import { useRouter } from "next/navigation";
@@ -14,7 +15,6 @@ const CharacterDetail = ({
   origin,
   image,
   onClick,
-  characterId,
   characterNotes,
 }) => {
   const router = useRouter();
@@ -67,12 +67,7 @@ const CharacterDetail = ({
               </div>
             </div>
             <div className="grid justify-start gap-2">
-              <h6 className="text-md text-pretty ">
-                <Notes
-                  characterId={characterId}
-                  characterNotes={characterNotes}
-                />
-              </h6>
+              <Notes characterNotes={characterNotes} />
             </div>
           </div>
         </div>
@@ -82,4 +77,3 @@ const CharacterDetail = ({
 };
 
 export default CharacterDetail;
-

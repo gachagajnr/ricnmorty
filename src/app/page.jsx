@@ -14,8 +14,8 @@ export default function Home() {
   useEffect(() => {
     const fetchCharacters = async () => {
       const response = await getCharacters();
-       if (response[0].results) {
-        setCharacters(response[0].results);
+      if (response.data) {
+        setCharacters(response.data.results);
       } else {
         setError(response.message);
       }

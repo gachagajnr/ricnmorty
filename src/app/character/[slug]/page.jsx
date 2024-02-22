@@ -17,14 +17,14 @@ const Detail = ({ params }) => {
     const fetchCharacter = async () => {
       try {
         const response = await getCharacter(params.slug);
-        // if (response.status === 200) {
         if (response) {
           setCharacter(response);
           const res = await getCharacterNotes(params.slug);
-
           setCharacterNotes(res);
         }
-      } catch (error) {}
+      } catch (error) {
+        setError(error.toString());
+      }
     };
 
     fetchCharacter();

@@ -1,13 +1,7 @@
+"use client";
 import React from "react";
 
-const NotesDialog = ({
-  name,
-  saveNote,
-  onChange,
-  error,
-  success,
-  onClick,
-}) => {
+const NotesDialog = ({ name, saveNote, onChange, error, success, onClick }) => {
   return (
     <dialog
       id="notesDialog"
