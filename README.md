@@ -1,5 +1,6 @@
 # Rick and Morty Character Notes App
 
+## About
 This is a simple Next.js application that uses the [Rick and Morty API](https://rickandmortyapi.com/) to display character information and allows users to add notes to characters.
 
 ## Features
@@ -14,7 +15,7 @@ This is a simple Next.js application that uses the [Rick and Morty API](https://
 - Next.js
 - JavaScript
 - Tailwind CSS
-- Rest Client
+- Rest Client (Axios)
 - MongoDB
 - mongoose
 
@@ -50,7 +51,7 @@ This is a simple Next.js application that uses the [Rick and Morty API](https://
 
 - **MONGO DB**: MongoDB is a good choice for applications that need a flexible, scalable, and high-performance database. It's particularly well-suited for applications that need to handle large amounts of data or high traffic, or that need to work with data that doesn't fit neatly into a relational model..
 
-- **Why use DATABASE over local storage**: local storage is a convenient and lightweight option for storing small amounts of data but  databases provide a more robust and scalable solution for applications that need to store data that can be accessed in the case of multiple devices.
+- **Why use DATABASE over local storage**: local storage is a convenient and lightweight option for storing small amounts of data but databases provide a more robust and scalable solution for applications that need to store data that can be accessed across multiple devices in the case we were to add features like authentication.
 
 ## Why REST?
 
@@ -60,9 +61,9 @@ This is a simple Next.js application that uses the [Rick and Morty API](https://
 
 - **Caching**: RESTful APIs are cacheable by default, meaning responses can be cached at various levels (browser, CDN, ) to improve performance and reduce server load. This is especially useful for static data like character information in the Rick and Morty API, where the data doesn't change frequently.
 
-- **Tooling**: REST has been around for a long time and has a mature ecosystem of tools and libraries for building and consuming APIs. This includes libraries for making HTTP requests (e.g., Axios), generating API documentation (e.g., Swagger), and testing APIs (e.g., Postman).
+- **Tooling**: REST has been around for a long time and has a mature ecosystem of tools and libraries for building and consuming APIs. 
 
-Overall, while GraphQL offers more flexibility and efficiency for complex data fetching scenarios, REST is a better fit for the simple data fetching requirements of the Rick and Morty API. It aligns well with the API's structure and provides a straightforward way to access and manipulate the data.
+Overall, while GraphQL offers more flexibility and efficiency for complex data fetching scenarios, REST is a better fit for the simple data fetching requirements of the Rick and Morty API. It aligns well with the API's structure and provides a straightforward way to access and manipulate the data without having to do complex API setup.
 
  
 ## Why JavaScript?
