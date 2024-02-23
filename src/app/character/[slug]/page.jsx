@@ -20,15 +20,20 @@ const Detail = ({ params }) => {
         if (response) {
           setCharacter(response);
           const res = await getCharacterNotes(params.slug);
-          setCharacterNotes(res);
+          if (res) {
+            setCharacterNotes(res);
+          } else {
+            setError("An error occurred");
+          }
         }
       } catch (error) {
+        console.log(error);
         setError(error.toString());
       }
     };
 
     fetchCharacter();
-  }, [notes,params.slug]);
+  }, [notes, params.slug]);
 
   const handleAddNote = (character) => {
     document.getElementById("notesDialog").showModal();
@@ -52,9 +57,10 @@ const Detail = ({ params }) => {
     };
     try {
       const res = await addNewNote(data);
+      setCharacterNotes((notes) => [...notes, res]);
       setSuccess(res.notes);
       setError("");
-    } catch (error) {
+     } catch (error) {
       setError(error.message);
       setSuccess("");
     }
@@ -73,6 +79,7 @@ const Detail = ({ params }) => {
         success={success}
         onClick={handleClearSuccessOrError}
       />
+      {error && <div className="p-2 text-orange-500">{error.toString()}</div>}
       {character.location && (
         <>
           <CharacterDetail
